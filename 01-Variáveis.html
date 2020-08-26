@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    //"use scrict" impede que variaveis sejam declaradas seo uso do let, var ou const
+    //Iniciar variáveis diretamente é uma má pratica de programação
+    "use scrict"
+   
+   // Declaração de variáveis em JS
+
+   // Declarando três variaveis separadamente
+   //Variaveis criadas sem receber nenhum valor = undefined
+   let a
+   let b
+   let c
+
+   //Declarando tres variaveis de uma só vez
+   let x, y, z
+
+   let v1 = "Test" //tipo string
+   let v2= 2.75    //tipo number
+   let v3 = true   //tipo boolean 
+   let v4 = 70     //tipo number
+   let v5 = '123'  // tipo string
+
+   //Mudando valor de v2
+   v2 = 'batata' //tipo string
+
+   //Descobrindo o tipo das variaveis
+   //alert(typeof v2) 
+
+   // Declarando varias variaveis com valor e sem valor
+
+   let q1 = 5, q2 = 7, q3 = '4', res 
+
+   //Operadores aritméticos
+   res = q1 - q2    //Subtração
+
+   //Subtração com conversão de string para numero
+   res = q1 - q3    //Ou seja, ele ignorou que o 4 é uma string
+   
+   //Falha na conversão de v2 para numero pq dentro da string nao
+   //Há um numero válido.. Dando o resultado NaN(not a number)
+   res = q1 - v2
+   //alert (res) 
+    
+   //Multiplicação
+   res = q1 * q2 //35
+   //alert(res) 
+   res = q1 * q3 // 20, com conversão de q3
+   res = q1*v2 //NaN
+   //alert(res) 
+    
+   //Divisão
+   res = q1 / q2    //0.7142857143..
+   res = q1 / q3    //1.23
+   res = q1 /v2     //Nan
+   //alert(res)
+   
+   // Adição
+   res = q1 + q2    //12
+   res = q1 + q3    //54, Isso porque houve concatenação, ou seja
+//Com sinal +, havendo pelo menos uma string entre os termos
+// haverá conversão para string dos demais termos e juntar todos
+    res = q1 + v2   //'5Batata', houve concatenação
+    
+    //Forçando soma de um numero com uma string que contem
+    //um valor numerico válido
+    
+    //Forma 1: usando Number()
+    res = q1 + Number(q3) //9
+
+    //Forma 2: usando parseInt()
+    res = q1 + parseInt(q3)
+    //alert (res)
+    
+    //Potenciação (** JS > 2014)
+    res = q1 ** q2  //78125
+    res = q1 ** q3  //625
+    res = q1 ** v2  //NaN
+   
+   //Outra forma de potenciação (Forma antiga)
+    res = Math.pow(q1,q2) //78125
+   
+   //Operador de módulo (resto da divisão)
+   res = 5 % 2  // 1 (resto da divisão)
+   res = 11 % 3 // 2 (resto)
+   res = 8 % 2  // 0 
+   
+   
+   
+   alert (res)
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
