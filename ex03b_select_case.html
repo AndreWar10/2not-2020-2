@@ -37,22 +37,32 @@
         if(isNaN(num1) || isNaN(num2)){
            alert('*ERRO: Pelo menos um dos números informados é inválido!')
            temErro = true
-        } 
-        else if(oper == '+'){ 
-           res = num1 + num2 
-        }
-        else if(oper == '-'){
-           res = num1 - num2
-        }
-        else if(oper == '*' || oper == 'x' || oper == 'X'){
-           res = num1 * num2     
-        }
-        else if(oper == '/' || oper == ':'){
-            res = num1 / num2
-        }
+        }         
         else {
-            alert('*ERRO: O operador informado é inválido')
-            temErro = true
+            switch(oper){
+                case '+':
+                    res = num1 + num2
+                    break        //Não esquecer do break 
+
+                case '-':
+                    res = num1 - num2
+                    break
+
+                case 'X':       //case vazio
+                case 'x':       //case vazio
+                case '*':       //case vazio
+                    res = num1 * num2
+                    break
+
+                case '/':       //case vazio
+                case ':':
+                    res = num1 / num2
+                    break
+
+                default:        // se não entrar em nenhum case
+                    alert('*ERRO: O operador informado é invalido.') 
+                    temErro = true 
+            }    
         }
 
         //Se NÃO tem erro eu faço a seguinte (variavel chamada de "flag")
@@ -61,9 +71,9 @@
             // num2 + " " + "é igual a: " +  res + ".")
            
            //Usando string template (que usa acentos graves - "backtick") 
-           document.write(`O resultado da operação:<br> ${num1} ${oper} ${num2}
+           document.write(`O resultado da operação: ${num1} ${oper} ${num2}
                 é igual a ${res}`)
-           //<br> serve pra pular linha no doc.write, no alert pula com /n
+           
            } 
     </script>
 </head>
