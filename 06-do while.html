@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    //"use scrict" impede que variaveis sejam declaradas seo uso do let, var ou const
+    //Iniciar variáveis diretamente é uma má pratica de programação
+    "use scrict"
+   
+   /*
+        Loop da soma dos numeros até que seja zero
+   */
+
+    let soma = 0
+    let num
+
+    /*
+        caracteristicas do llop do while
+        1)teste no final
+        2)garantia de execução: 1
+        3)numero de repetiçoes: indeterminado
+    */
+    do {
+         num = Number(prompt("Digite um numero para somar(ou 0 para terminar):"))
+
+        if(!isNaN(num)){
+            soma += num
+        }
+    } while(num!= 0)
+
+    document.write(`A soma dos numeros informados é ${soma}.`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
