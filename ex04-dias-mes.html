@@ -23,6 +23,68 @@
             FEVEREIRO: 28 dias (29 em anos bissextos)
         */
 
+        let mes = parseFloat(prompt('Informe o número correspondente a um mês, na faixa entre 1 e 12:'))
+        
+        //variavel de controle de fluxo  
+        let res,temErro = false   
+        let nome = 0
+
+            //teste de validação dos números
+            if(isNaN(mes)|| (mes < 1 || mes > 12)){
+            alert('*ERRO: O número é  inválido!')
+            document.write('Por favor recarregue a página e insira um valor válido!<br> (Entre 1 e 12)')
+            temErro = true
+            }  
+            
+            else {
+                switch(mes){
+                case 2:
+                    res = 'FEVEREIRO<br> O mês possui 28 dias, (29 em anos bissextos)!';
+                    break
+                    //30 dias
+                case 4:
+                    res = 'ABRIL<br> O mês possui 30 dias!';
+                    break
+                case 6: 
+                    res = 'JUNHO<br> O mês possui 30 dias!';
+                    break
+                case 9:
+                    res = 'SETEMBRO<br> O mês possui 30 dias!';
+                    break
+                case 11:
+                     res = 'NOVEMBRO<br> O mês possui 30 dias!';
+                    break
+                    //31 dias
+                case 1:
+                    res = 'JANEIRO<br> O mês possui 31 dias!';
+                    break
+                case 3:
+                    res = 'MARÇO<br> O mês possui 31 dias!';
+                    break
+                case 5:
+                    res = 'MAIO<br> O mês possui 31 dias!';
+                    break
+                case 7:
+                    res = 'JULHO<br> O mês possui 31 dias!';
+                    break         
+                case 8:
+                    res = 'AGOSTO<br> O mês possui 31 dias!';
+                    break
+                case 10:
+                    res = 'OUTUBRO<br> O mês possui 31 dias!';
+                    break
+                case 12:
+                    res = 'DEZEMBRO<BR> O mês possui 31 dias!';    
+                    break 
+                //Fiz mes por mes para inserir o nome do mês, mas sei que poderia fazer varios "case:" em branco//    
+                    
+                default:
+                    temErro = true
+                }
+            }
+                if(!temErro) {  
+                    document.write(res)   
+                }    
     </script>
 </head>
 <body>

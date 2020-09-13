@@ -38,6 +38,58 @@
             ao dígito informado.
         */
 
+       let nu = parseFloat(prompt('Informe um dígito de 0 a 9:'))
+       let le,temErro = false 
+
+        //teste de validação dos números
+            if(isNaN(nu)|| (nu > 9)){
+            alert('*ERRO: O número é  inválido!')
+            document.write('Por favor recarregue a página e insira um valor válido!<br> (Entre 0 e 9)')
+            temErro = true
+            } 
+            else {
+                switch(nu){
+                case 0:
+                    le = 'A';
+                    break
+                case 1:
+                    le = 'B';
+                    break
+                case 2:
+                    le = 'C';
+                    break    
+                case 3:
+                    le = 'D';
+                    break        
+                case 4:
+                    le = 'E';
+                    break
+                case 5:
+                    le = 'F';
+                    break
+                case 6:
+                    le = 'G';
+                    break
+                case 7:
+                    le = 'H';
+                    break
+                case 8:
+                    le = 'I';
+                    break
+                case 9:
+                    le = 'J';
+                    break   
+                 
+                default:
+                    temErro = true 
+                }
+            }
+
+                if(!temErro) {  
+                    document.write(`A letra correspondente ao número ${nu} é: <br>
+                    ${le}<br><br>
+                    Ou seja, se sua placa fosse (ABC-1${nu}34), com o modelo Mercosul ela passará a ser (ABC-1${le}34).`)
+                }    
     </script>
 </head>
 <body>
