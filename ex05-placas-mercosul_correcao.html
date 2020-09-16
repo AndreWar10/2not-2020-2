@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+    <script>
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+        'use strict'
+        
+        /*
+            Recentemente, as placas de automóveis no Brasil passaram a usar
+            o chamado "modelo Mercosul".
+
+            Nesse modelo, o segundo dígito numérico do modelo anterior passou
+            a ser representado por uma letra. A conversão é regida pela tabela:
+
+            Dígito         Letra
+               0              A
+               1              B
+               2              C
+               3              D
+               4              E
+               5              F
+               6              G
+               7              H
+               8              I
+               9              J
+
+            Assim, uma placa tradicional ABC-1234, no formato do padrão Mercosul,
+            ficaria ABC-1C34.
+
+            Peça para o usuário informar um dígito de 0 a 9 e, usando a estrutura
+            de decisão switch..case, informe ao usuário a letra correspondente
+            ao dígito informado.
+        */
+
+       let digito, le
+       do {
+           digito = parseInt(prompt('Informe o segundo dígito da placa tradicional (0 a 9):'))
+       } while(isNaN(digito) || digito < 0 || digito > 9)
+
+       switch(digito){
+           case 0:
+               le = 'A'
+               break
+            case 1:
+                le = 'B';
+                break
+            case 2:
+                le = 'C';
+                break    
+            case 3:
+                le = 'D';
+                break        
+            case 4:
+                le = 'E';
+                break
+            case 5:
+                le = 'F';
+                break
+            case 6:
+                le = 'G';
+                break
+            case 7:
+                le = 'H';
+                break
+            case 8:
+                le = 'I';
+                break
+            case 9: // ou default
+                le = 'J';
+                // como é o ultimo nao precisa de break      
+       }
+        
+        //Usando string template delimitado por acentos agudos(``)
+        alert(`A letra correspondente ao dígito ${digito} é ${le}`)
+    
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
