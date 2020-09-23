@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento de modelo</title>
+</head>
+
+<body>
+    <h1>Titulo da pagina</h1>
+    <p>Isto é um paragrafo</p>
+    <ul>  
+        <li>Primeiro item</li>
+        <li id='intruso'>Intruso'</li> 
+        <li>Segundo item</li>
+        <li id='item-x'>Terceiro item</li>
+    </ul>
+
+<script>
+//id ali em cima da um atributo para o item da lista
+//quando se da id para o elemento, ele pode ser trocado a vontade de lugar na lista, mas ele fica marcado com as alterações feitas
+
+//Quando o javascript é usado apra manipular HTML
+//a seção <script> deve ser posicionada na parte final do arquivo antes de </body>
+
+
+        'use strict' // use strict impede que variaveis sejam declaradas sem o uso de let var ou const, e alem disso, comentario pode ser usado como //
+        //iniciar variaveis diretamente é má pratica de programacao
+       /* 
+            DOM = Document Object Model = modelo de objeto de documento 
+       */
+
+    //retorna o primeiro elemento de seu tipo, captura o elemento e joga dentro da variavel definida(uma das forams de fazer)
+    //const define um valor unico q n pode ser alterado futuramente
+    const cab = document.querySelector('h1')
+    
+    //alterando o texto interno do elemento
+    cab.innerHTML = 'Manipulando o doucment object model DOM'
+
+/*
+    Alterando o texto do segundo item:
+*/
+    //query.selectorAll captura todos os elementos do tipo informado
+    const itens = document.querySelectorAll('li')
+
+    //em javascript e na maioria das linguagens, o primeiro elemento é o indice 0
+    //se o primeiro item é o 0, o segundo é o 1, entao ele pega o segundo <li> para altera-lo
+    itens[1].innerHTML = 'Bertoldo' 
+
+    const itens2 = document.getElementsByTagName('li') //forma antiga de se fazer, asntes do querySelector
+    itens2[2].innerHTML = 'Geronimo'
+
+    //capturando um item por id da forma antiga
+    const elemIntruso = document.getElementById('intruso')
+    elemIntruso.innerHTML = 'sou um intruso'
+
+    //capturando um elemento por id (versao 5 para frente)
+    //para capturar por id com o querySelector, é necessario usar # antes do id do elemento
+    const elemX = document.querySelector('#item-x') //variavel criada com maiusculo apenas por ser duas palavras
+    elemX.style.backgroundColor = 'yellow' //alterada a cor de fundo da palavra
+
+        </script>       
+</body>
+</html>
