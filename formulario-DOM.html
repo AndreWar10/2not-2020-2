@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento de modelo</title>
+   
+</head>
+<body>
+
+    <h1>Formulário calculo de preços</h1>
+
+    <!--label e input sao elementos in line, ou me linha (linha inica, sem quebra)-->
+    <!--div é um elemento de bloco, se dois elementos estiverem um em baixo do outro, eles ficam listados-->
+
+    <div style="background: yellow"> <!-- div ocupa 100% do espaço da largura, toda a linha-->
+    <label>Nome do produto: </label> <!-- input insere um campo de digitação para o usuario-->
+    <input size="50"> <!-- Altera o tamanho do campo de digitação-->
+    </div>
+
+    <div>
+    <label> Quantidade </label>
+    <input id="qtd" type="number" min="1" max="10">  <!-- type number define como input de numeros-->
+    </div>                                     <!-- min e max serve apenas para os spins, nao funcionam em digitação direta-->
+
+    <div>
+    <label> Preço Unitário</label>
+    <input id="preco_unit" type="number" step="0.01" min="0.01">
+    </div>
+
+    <div>
+    <label> PREÇO TOTAL: </label>
+    <span id="resultado">  </span> <!-- para saida de dados e  é invisivel, elemento in line que serve para mostrar dados, uma div só q in line-->
+
+    </div>
+
+
+ <script>
+        'use strict' // use strict impede que variaveis sejam declaradas sem o uso de let var ou const, e alem disso, comentario pode ser usado como //
+        //iniciar variaveis diretamente é má pratica de programacao
+       
+       let elemenQtd = document.querySelector('#qtd')
+
+       let elemPrecoUnit = document.querySelector('#preco_unit')
+
+       let elemResultado = document.querySelector('#resultado') //buscando elementos por id
+
+    function calcular (){//abertura de uma função, que reserva o codigo para executar depois
+
+       let quantidade = parseFloat(elemenQtd.value) //forma trad
+       let precoUnit = Number(elemPrecoUnit.value)  //forma nova
+       let resultado
+
+       if(!isNaN(quantidade) && !isNaN(precoUnit)){
+        elemResultado.innerText = (quantidade * precoUnit).toFixed(2) //toFixed define a quantidade de casas decimais 
+       }
+        else{
+            elemResultado.innerText= ' ' //innerText é para mostrar mensagem
+        }
+       
+    }//fim da função nomeada como calcular, q ficou parada no processamento da pagina
+
+    elemenQtd.addEventListener('change', calcular) //define um 'escutador' para ficar vigiando a mudança do valor do campo
+    elemPrecoUnit.addEventListener('change', calcular) //define um 'escutador' para ficar vigiando a mudança do valor do campo
+                                                        //o change dispara quando vc sai do campo q estava sendo digitado e tem essa limitação, de precisar sair do campo
+
+    elemenQtd.addEventListener('keyup', calcular) //defiee um escutador e dispara a função qunado precionada uma tecla foi precionada e foi solta
+    elemPrecoUnit.addEventListener('keyup', calcular) //defiee um escutador e dispara a função quando uma tecla foi precionada e foi solta
+                                                        
+        </script>
+</body>
+</html>
