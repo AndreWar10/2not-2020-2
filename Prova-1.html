@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    //"use scrict" impede que variaveis sejam declaradas seo uso do let, var ou const
+    //Iniciar variáveis diretamente é uma má pratica de programação
+    "use scrict"
+    
+    //for é para fazer a instrução, de contar km de 29 em 29 até 400
+    for(let i = 1; i <= 400; i = i + 29) {
+        92  
+    }
+
+    let num
+
+// se o num for maior que 400, vai repetir, ou se for inválido
+    do {
+        num = Number(prompt("Informe um quilometro entre 1 e 400:"))
+
+         } while(isNaN(num) || num > 400)
+
+// se chegou aqui é válido então switch case é para verificar se existe francano   
+let res, temErro = false      
+   switch(num){
+                
+                case 92:       //case vazio
+                case 177:       //case vazio
+                case 291:
+                case 388:       //case vazio
+                    res = "Megalojas do Magazine Luiza"
+                    break
+
+                case 153:       //case vazio
+                case 356:
+                    res = "Drive-thru dos Calçados Rafarillo"
+                    break
+
+                case 187:
+                    res = "Posto de recarga da Viação São José"    
+                    break
+
+                case 210:
+                    res = "Filial da Padaria Estrela"    
+                    break
+                
+                case 314:
+                    res = "Fábrica do Jubileu do Amendoim"    
+                    break
+                
+                case 367:
+                    res = "Franca AcquaParque Unidade II"    
+                    break
+
+                default:    // se não entrar em nenhum case
+                    alert('Vapo, tem nada aqui não. Segue reto toda vida,meu fii.') 
+                    temErro = true 
+            }    
+        
+
+        //Se NÃO tem erro 
+        if(!temErro) {
+            
+           //Usando string template (que usa acentos graves - "backtick") 
+           document.write(`Existe algo francano: ${res}`)
+           
+           } 
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
