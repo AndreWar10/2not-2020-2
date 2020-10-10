@@ -87,7 +87,30 @@
     //"use scrict" impede que variaveis sejam declaradas seo uso do let, var ou const
     //Iniciar variáveis diretamente é uma má pratica de programação
     "use scrict"
-    
+
+    /* PASSO 1: captura dos elementos HTML */
+
+    const elPrimeiroNome = document.getElementById('primeiro-nome')
+    const elSobrenome = document.getElementById('sobrenome')
+    const elFormaTratamento = document.getElementById('forma-tratamento')
+
+    const elMasculino = document.querySelector('#masculino')
+    const elFeminino = document.querySelector('#feminino')
+    const elHoraDia = document.querySelector('#hora-dia')
+    const elAlert = document.querySelector('#alert')
+    const elSaudacao = document.querySelector('#saudacao')
+    const elEnviar = document.querySelector('#enviar')
+
+    /* PASSO 2: validação de entrada de usuário */
+
+function validar(){
+
+    if(elPrimeiroNome.value == ''){
+        alert('O primeiro nome deve ser informado')
+    }
+}
+
+    elEnviar.addEventListener('click', validar)
     </script>
     
 </body>
