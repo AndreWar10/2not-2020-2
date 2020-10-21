@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Web</title> <!--Nome que vai ficar na aba da página-->
+    <div>
+    
+    <style>
+    /*Configurar o Estilo da Página*/ 
+        label{
+            display: block;
+        }
+        fieldset label{
+            display: inline;
+        }
+
+        fieldset{
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            width: 200px;
+        }
+
+        div, fieldset {
+            margin-bottom: 15px;
+        }
+    </style>
+    </div>
+   
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">FAUSTO GONCALVES CINTRA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">177000.000000000</mso:Order>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">FAUSTO GONCALVES CINTRA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100D1709B3E936BE4488A7EEB682FDD8227</mso:ContentTypeId>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+    <h1>Calculadora Web</h1> <!--Título da página-->
+    
+    <!--Obter primeiro numero-->
+    <div>
+        <label>Primeiro número</label> 
+        <input type = "number" id = "primeiro-numero" placeholder="Informe o primeiro numero" size="25">
+    </div>
+    
+    <!--Opções de operações para usuário escolher-->
+    <div>
+        <label>Operação Aritmética</label>
+        <select id = "operacao-ari">
+            <option>(Selecione)</option>
+            <option>Soma</option>
+            <option>Subtração</option>
+            <option>Multiplicação</option>
+            <option>Divisão</option>
+            <option>Potenciação</option>
+            <option>Resto da divisão</option>
+        </select>
+    </div>
+
+    <!--Obter segundo numero-->
+     <div>
+        <label>Segundo número</label>
+        <input type = "number" id = "segundo-numero" placeholder="Informe o segundo número">
+    </div>
+
+    <fieldset>
+        <legend>Exibição da operação</legend>
+        <input type="checkbox" id="alert">
+        <label for="alert">Exibir resultado da operação no documento</label>
+    </fieldset>
+
+    <div>
+        <button id="enviar">Calcular</button>
+    </div>
+
+    <div id = "resultado"></div>
+
+     <script>
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+        'use strict'
+    
+        /* 
+
+            Monte um formulário com os seguintes campos:
+            * Primeiro número (input numérico)
+            * Operação aritmética (select, com as opções de soma, subtração,
+                multiplicação, divisão, potenciação e resto da divisão)
+            * Segundo número (input numérico)
+            * Div para exibição do resultado da operação aritmética
+            * Botão "calcular"
+
+            Validações:
+            * Os campos de número devem estar preenchidos e com números válidos
+            * Deve ter sido selecionada uma operação artimética válida
+
+        */
+
+        /* PASSO 1: captura de elementos HTML */
+        const elPrimeiroNumero = document.getElementById('primeiro-numero')
+        const elSegundoNumero = document.getElementById('segundo-numero')
+        const elOperacao = document.getElementById('operacao-ari')
+        const elAlert = document.querySelector('#alert')
+        const elEnviar = document.querySelector('#enviar')
+        const elResultado = document.querySelector('#resultado')
+
+  
+       
+        /* PASSO 2: opção aritmética válida*/ 
+        function validar(){
+
+            let valido = true
+
+            //trim(): retira espaços em branco no início e no final de uma string.. Evitando que o usuário preencha com espaçoes em branco
+            if(elPrimeiroNumero.value.trim() == ''){ //se não foi preenchida, então..
+                alert('O primeiro numero deve ser informado')
+                elPrimeiroNumero.focus() // Coloca o foco no controle, cursor no campo que deu erro       
+            }
+            else if(elSegundoNumero.value.trim() == ''){ //se não foi preenchida, então
+                alert('O segundo numero deve ser informado')
+                elSegundoNumero.focus() // Coloca o foco do cursor no campo que deu erro
+                valido = false
+            }
+            else if(elOperacao.selectedIndex <= 0){
+                alert('Selecione uma Operação Aritmética.') 
+                elOperacao.focus()
+                valido = false
+            }           
+            else if(!(elAlert.checked)){
+                alert('Se você quer ver o resultado tem que marcar a opção de exibir na tela, USUÁRIO BURRO !')
+                elAlert.focus()
+                valido = false
+            } 
+            return valido
+            }
+
+            //let num1 = (elPrimeiroNumero)
+            //let num2 = (elSegundoNumero)
+           
+            
+            function calcular(){
+                if(validar()){
+                    let resultado = 0
+                    let op
+
+                    switch(elOperacao.selectedIndex){
+                        case 1:
+                        resultado = parseFloat(elPrimeiroNumero.value) + parseFloat(elSegundoNumero.value)
+                        op = "+"
+                            break
+                        case 2: 
+                        resultado = parseFloat(elPrimeiroNumero.value) - parseFloat(elSegundoNumero.value)
+                        op = "-"
+                            break
+                        case 3:
+                        resultado =  parseFloat(elPrimeiroNumero.value) * parseFloat(elSegundoNumero.value)
+                        op = "*"
+                        break
+                        case 4:
+                        resultado =  parseFloat(elPrimeiroNumero.value) / parseFloat(elSegundoNumero.value)
+                        op = "/"
+                            break
+                        case 5:
+                        resultado =  parseFloat(elPrimeiroNumero.value) ** parseFloat(elSegundoNumero.value)  
+                        op = "^"
+                        break
+                        default:
+                        resultado = parseFloat(elPrimeiroNumero.value) % parseFloat(elSegundoNumero.value) 
+                        op = "resto da divisão por"  
+                
+                    }
+
+                    //Mostragem de dados em .innerText
+                    if(elAlert.checked){
+                elResultado.innerText = `O resultado de ${elPrimeiroNumero.value} ${op} ${elSegundoNumero.value} é : 
+                ${resultado}`
+                    }
+                }
+            }
+            //executar a função apenas qunado o botão enviar for pressionado
+            elEnviar.addEventListener('click', calcular) 
+    </script>
+
+</body>
+</html>

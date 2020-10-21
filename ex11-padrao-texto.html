@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário ADS</title>   <!--Título da aba do navegador-->
+<div>
+    <style>
+        /*Configurar o Estilo da Página*/  
+            label{
+                display: block;
+            }
+            fieldset label{
+                display: inline;
+            }
+    
+            fieldset{
+                border: 1px solid lightgray;
+                border-radius: 8px;
+                width: 200px;
+            }
+    
+            div, fieldset {
+                margin-bottom: 15px;
+            }
+     </style>
+</div>
+    
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">FAUSTO GONCALVES CINTRA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">176900.000000000</mso:Order>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">FAUSTO GONCALVES CINTRA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100D1709B3E936BE4488A7EEB682FDD8227</mso:ContentTypeId>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+    <h1>Formulário de padrões</h1> <!--Título da página-->
+
+    <!--Obter caractere-->
+    <div>
+        <label>Informe um Caractere</label> 
+        <input type = "text" id = "cara" placeholder="Informe apenas um caractere" maxlength="1" size="25">
+    </div>
+    
+    <!--Obter numero-->
+    <div>
+        <label>Informe um número inteiro de 1 até 100</label>
+        <input type = "number" id = "number" min="1" max="100" placeholder="Informe um numero de 1 até 100">
+    </div>
+
+    <div>
+        <button id="enviar">Gerar padrão</button>
+    </div>
+    
+    <div id = "resultado"></div>    
+
+        <script>
+                // 'use strict' impede que variáveis sejam declaradas
+                // sem o uso de let, var ou const
+                // Inicializar variáveis diretamente é má prática de
+                // programação
+                'use strict'
+            
+                /* 
+        
+                    Monte um formulário com os seguintes campos:
+                    * Um input de texto que aceite apenas 1 (um caractere)
+                    * Um input numérico que aceite números inteiros entre 1 e 100
+                    * Uma div para exibição do resultado
+                    * Botão "Gerar padrão"
+        
+                    Validações:
+                    * Deve ser informado um caractere (não pode ser o espaço em branco)
+                    * Deve ter informado um número entre 1 e 100
+        
+                    Ao clicar o botão "Gerar padrão", deverá ser exibido na div de
+                    resultado um padrão de texto conforme o exemplo abaixo:
+        
+                    Se o caractere informado for * e o número selecionado for 11, serão
+                    geradas 11 linhas de padrão de texto, a primeira linha contendo
+                    uma vez o caractere, a segunda linha contendo o caractere duas
+                    vezes, e assim por diante:
+        
+                    * 
+                    **
+                    ***
+                    ****
+                    *****
+                    ******
+                    *******
+                    ********
+                    *********
+                    **********
+                    ***********
+                */
+
+        /* PASSO 1: captura de elementos HTML */
+            const elCaractere = document.querySelector('#cara')
+            const elNumber = document.querySelector('#number')
+            const elGerar = document.querySelector('#enviar')
+            const elResultado = document.querySelector('#resultado')
+        
+       
+        /*Validações*/
+        
+        function validar(){
+        let valido = true
+
+        //trim(): retira espaços em branco no início e no final de uma string.. Evitando que o usuário preencha com espaçoes em branco
+        if(elCaractere.value.trim() == ''){ //se não foi preenchida, então..
+            alert('Um caractere deve ser informado')
+            elCaractere.focus() // Coloca o foco no controle, cursor no campo que deu erro       
+            valido = false
+        }
+        
+        else if( (elNumber.value < 1) || (elNumber.value > 100) || (elNumber.value == '') ) {  //condição para numero ser preenchido, > 1 e < 100
+            alert('Deve ser informado um número de 1 até 100')
+            elNumber.focus() // Coloca o foco do cursor no campo que deu erro
+            valido = false
+        }
+        return valido
+        }
+
+        function gerar(){ //função para montar o requisito 
+        let linha = elNumber.value
+
+        if(validar()){
+            // executar (for) para printar a quantidade de linhas exata
+            for(let i=1; i<=linha; i++) { 
+                //O que sera printado(caractere escolhido):   
+                for(let j=1; j<=i; j++){ 
+                    elResultado.innerHTML += elCaractere.value // executar o comando de acordo com o caracttere e o numero de linhas 
+                }
+                elResultado.innerHTML += '<br>' //pular linha a cada atualização            
+            }
+        }
+    }    
+            //executar a função apenas qunado o botão enviar for pressionado
+            elGerar.addEventListener('click', gerar) 
+        </script>  
+</body>
+</html>
