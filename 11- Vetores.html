@@ -103,6 +103,48 @@
        console.log('Não existe')
    }
 
+   console.log(frutas)
+   alert(frutas)            
+   document.write(frutas) 
+   //Dá certo, mas não é bonito
+
+   /* slice(): "fatia" de um vetor, gerando um outro vetor apenas com o pedaço desejado*/
+   let parte = frutas.slice(1, 4)
+   console.log(frutas)
+   console.log(parte)
+
+   //Quando chamado apenas com um parâmetro, a fatia inclui daquela posição
+   //Até o final do vetor
+   let outraParte = frutas.slice(3) 
+   console.log(outraParte)
+
+   //Acessando posições do vetor
+   //A fruta que está na terceira posição
+   console.log(frutas[2])
+
+   //A primeira fruta
+   console.log(frutas[0])
+
+   //A ultima fruta
+   console.log(frutas[frutas.length - 1])
+
+   console.log('...............................................')
+
+   let i 
+    for(i = 0; i < frutas.length; i++){
+       console.log(i, frutas[i])
+    }
+   console.log('Valor final de i:', i)
+
+   console.log('...............................................') 
+
+   //Percurso na ordem decrescente
+    for(let i = frutas.length - 1; i >= 0; i-- ){
+        console.log(frutas[i])
+    }
+
+
+
 
 
     </script>
