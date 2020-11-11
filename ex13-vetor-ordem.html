@@ -5,7 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modelo de documento HTML</title>
-    <script>
+    
+</head>
+
+<body>
+<h1>Inserção de números em um vetor</h1>
+
+<label>Informe um numero inteiro</label>
+<input id='numero' type='number'>
+<button id = 'inserir'>Inserir</button>
+<div id='resultado'></div>
+
+
+<script>
         // 'use strict' impede que variáveis sejam declaradas
         // sem o uso de let, var ou const
         // Inicializar variáveis diretamente é má prática de
@@ -25,23 +37,75 @@
             inserir quantos números quiser dentro do vetor, e que pode já
             haver outros números no vetor inseridos anteriormente). Ignore 
             números repetidos.
-
-            Para colocar o número no local correto, você deverá percorrer
-            o vetor com um loop for, verificando se o número que já está na
-            posição é menor ou maior que o número que está sendo inserido.
-            Quando encontrar um número MENOR do que o que será inserido,
-            você terá encontrado a posição correta para inserir em ordem.
-            Faça a inserção com splice() e saia do loop com break.
-
-            A cada inserção, exiba os elementos do vetor dentro da div de 
-            resultados. Para gerar a exibição, faça um loop for..of.
-
         */
-        
-    </script>
-</head>
 
-<body>
+       let vetor []
+        
+        // Captura dos elementos
+        const elNumero = document.querySelector('#numero')
+        const elInserir = document.querySelector('#inserir')
+        const elResultado = document.querySelector('#resultado')
+
+        function insere() {
+            let num = parseInt(elNumero.value)
+            let valido = true
+
+            if(isNaN(num)) {
+                alert('O valor informado não é um número inteiro válido!')
+                elNumero.focus()
+                valido = false
+            }
+        
+
+            if(valido) {
+                /*//Caso 1: o vetor está vazio
+                if(vetor.length === 0) {
+                    vetor.push(num)
+                } NÃO TEM NECESIDADE
+                //Caso 2: já existe(m) elemento(s) no vetor
+                else {*/
+                    let i
+                    for(i = 0; i < vetor.length; i++) {
+                        if(num < vetor[i]) {   //Encontrou a posição
+                            vetor.splice(i, 0, num) //Inserção na posição encontrada
+                            break // Interrompe o loop for
+                        }
+                    }
+                    //Se executou todo o loop for e não encontrou local de inserção, significa que este numero é maior que 
+                    // Todos os outros e, por consequencia, deve ser colocado no final do vetor
+                    if(i === vetor.length) {
+                        vetor.push(num)
+                    }
+                }
+
+                // eXIBIÇÃO DO VETOR
+                let texto = ''
+                for(let elemento of vetor) {
+                    texto += elemento + ', '
+                }
+                elResultado.innerText = texto
+
+                //Limpa input
+                elNumero.value = ''
+                elNumero.focus()
+            }
+        }
+
+        /*   
+        Para colocar o número no local correto, você deverá percorrer
+        o vetor com um loop for, verificando se o número que já está na
+        posição é menor ou maior que o número que está sendo inserido.
+        Quando encontrar um número MENOR do que o que será inserido,
+        você terá encontrado a posição correta para inserir em ordem.
+        Faça a inserção com splice() e saia do loop com break.
+        A cada inserção, exiba os elementos do vetor dentro da div de 
+        resultados. Para gerar a exibição, faça um loop for..of. 
+        */
+
+
+            elInserir.addEventListener('click', insere)
+
+    </script>
 
 </body>
 
